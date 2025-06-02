@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Comic+Relief:wght@400;700&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Exile&family=Playwrite+IT+Moderna:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sofadi+One&family=Tagesschrift&display=swap');
+
+
+.exile-regular {
+    font-family: "Exile", system-ui;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.tagesschrift-regular {
+    font-family: "Tagesschrift", system-ui;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+  
+  
