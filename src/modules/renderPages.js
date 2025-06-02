@@ -7,6 +7,7 @@ const login_form = () => {
             type="text"
             placeholder="Enter Captain's Name"
             class="tagesschrift-regular"
+            required
           /><br />
           <button type="submit" class="tagesschrift-regular">
             Comfirm Cap's Name
