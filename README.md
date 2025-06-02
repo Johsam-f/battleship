@@ -1,1 +1,3 @@
-# battleship
+# Battleship Game
+ 
+This repository contains a JavaScript implementation of the classic Battleship game. The project is designed using modern JavaScript practices, including Test-Driven Development (TDD) with Jest. Players will be able to place their ships, take turns attacking, and receive visual feedback on hits and misses. The goal of this project is to reinforce core programming concepts such as modular design, DOM manipulation, and event handling while also practicing clean, maintainable code through unit testing. This game will serve as both a fun interactive experience and a demonstration of front-end development skills.
