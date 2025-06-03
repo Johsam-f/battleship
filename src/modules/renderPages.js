@@ -56,7 +56,7 @@ const help_panel = () => {
 const place_ships = cap_name => {
     let grid_cells = '';
     for (let i = 0; i < 100; i++) {
-      grid_cells += '<div class="grid-cell"></div>';
+      grid_cells += `<div data-index="${i}" class="grid-cell"></div>`;
     }
 
     return `
