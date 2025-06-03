@@ -1,0 +1,69 @@
+span{
+    color: var(--color);
+    font-weight: 900;
+}
+
+#insert-ships{
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: var(--background-color);
+    margin: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+}
+
+.grid-box{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr); 
+    border: 3px solid #111;
+    border-radius: 3px;
+
+     /* Force square shape */
+    aspect-ratio: 1 / 1;
+    width: clamp(200px, 80vmin, 400px);  /*80vmin Uses the smaller of vw/vh to stay square */
+}
+
+.grid-cell{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* How to play game pop up */
+.help-modal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    place-items: center;
+}
+
+.help-content {
+    width: min(90%, 600px);
+    max-height: 80vh;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 40px 25px;
+    border-radius: 10px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-help {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 1.1rem;
+}
