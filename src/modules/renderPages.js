@@ -63,14 +63,6 @@ const place_ships = (cap_name) => {
       grid_cells += `<div data-index="${i}" class="grid-cell"></div>`;
     }
   
-    const ships = [
-      { name: 'carrier', length: 5 },
-      { name: 'battleship', length: 4 },
-      { name: 'cruiser', length: 3 },
-      { name: 'submarine', length: 3 },
-      { name: 'destroyer', length: 2 }
-    ];
-  
     return `
       <section id="insert-ships">
         <h2>Hello captain <span><strong>${cap_name}</strong></span>!</h2>
@@ -87,11 +79,26 @@ const place_ships = (cap_name) => {
             </div>
             
             <aside id="ships">
-                <img src="${shipImages['carrier.png']}" class="ship carrier">
-                <img src="${shipImages['battleship.png']}" class="ship battleship">
-                <img src="${shipImages['cruiser.png']}" class="ship cruiser">
-                <img src="${shipImages['submarine.png']}" class="ship submarine">
-                <img src="${shipImages['destroyer.png']}" class="ship destroyer">
+                <div>
+                    <img src="${shipImages['carrier.png']}" class="ship carrier">
+                    <span> Carrier (5m) </span> 
+                </div>
+                <div>
+                    <img src="${shipImages['battleship.png']}" class="ship battleship">
+                    <span> battleship (4m) </span>
+                </div>
+                <div>
+                    <img src="${shipImages['cruiser.png']}" class="ship cruiser">
+                    <span> cruiser (3m) </span>
+                </div>
+                <div>
+                    <img src="${shipImages['submarine.png']}" class="ship submarine">
+                    <span> submarine (3m) </span>
+                </div>
+                <div>
+                    <img src="${shipImages['destroyer.png']}" class="ship destroyer">
+                    <span> destroyer (2m) </span>
+                </div>
             </aside>
         </div>
         <section>
