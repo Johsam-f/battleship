@@ -18,7 +18,7 @@ span{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
     padding: 10px;
 }
@@ -32,11 +32,13 @@ span{
 
      /* Force square shape */
     aspect-ratio: 1 / 1;
-    width: clamp(200px, 80vmin, 400px);  /*80vmin Uses the smaller of vw/vh to stay square */
+    width: var(--grid-size); 
 }
 
 .grid-cell{
     border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: pointer;
 }
 
 /* How to play game pop up */

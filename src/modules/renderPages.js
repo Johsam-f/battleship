@@ -1,3 +1,5 @@
+import shipImages from './utils/importImages';
+
 const login_form = () => {
     return `
         <section id="login">
@@ -55,38 +57,6 @@ const help_panel = () => {
     `;
 }
 
-// const place_ships = cap_name => {
-//     let grid_cells = '';
-//     for (let i = 1; i <= 100; i++) {
-//       grid_cells += `<div data-index="${i}" class="grid-cell"></div>`;
-//     }
-
-//     return `
-//         <section id="insert-ships">
-//         <h2>
-//           Hello captain <span><strong>${cap_name}</strong></span
-//           >!
-//         </h2>
-//         <button id="details" title="how to play?">?</button>
-//         <p>
-//           Ahoy, <span><strong>${cap_name}</strong></span
-//           >! Time to deploy your ships—click and drag them onto the grid. No
-//           take-backsies once they're set! <i class="fas fa-anchor"></i>
-//         </p>
-//         <div class="flex">
-//           <section class="grid-box">
-//             ${grid_cells}
-//           </section>
-//           <aside id="ships"></aside>
-//         </div>
-//         <section id="ship-axis">
-//           <button data-name="horizontal" class="active-btn">Horizontal</button>
-//           <button data-name="vertical">Vertical</button>
-//         </section>
-//       </section>
-//     `;
-// }
-
 const place_ships = (cap_name) => {
     let grid_cells = '';
     for (let i = 0; i < 100; i++) {
@@ -105,20 +75,23 @@ const place_ships = (cap_name) => {
       <section id="insert-ships">
         <h2>Hello captain <span><strong>${cap_name}</strong></span>!</h2>
         <p>
-          Ahoy, <span><strong>${cap_name}</strong></span>! Time to deploy your ships—click and drag them onto the grid. No take-backsies once they're set! <i class="fas fa-anchor"></i>
+          Ahoy, <span><strong>${cap_name}</strong></span>! Time to deploy your fleet—select a ship and click a cell to place it. Choose orientation with the buttons! <i class="fas fa-anchor"></i>
         </p>
-        <section id="ship-axis">
-          <button data-name="horizontal" class="active-btn">Horizontal</button>
-          <button data-name="vertical">Vertical</button>
-        </section>
         <div class="flex">
-            <section class="grid-box">${grid_cells}</section>
+            <div>
+                <section id="ship-axis">
+                    <button data-name="horizontal" class="active-btn">Horizontal</button>
+                    <button data-name="vertical">Vertical</button>
+                </section>
+                <section class="grid-box">${grid_cells}</section>
+            </div>
+            
             <aside id="ships">
-                <img src="./assets/carrier.png" class="ship" draggable="true">
-                <img src="./assets/battleship.png" class="ship" draggable="true">
-                <img src="./assets/cruiser.png" class="ship" draggable="true">
-                <img src="./assets/submarine.png" class="ship" draggable="true">
-                <img src="./assets/destroyer.png" class="ship" draggable="true">
+                <img src="${shipImages['carrier.png']}" class="ship carrier">
+                <img src="${shipImages['battleship.png']}" class="ship battleship">
+                <img src="${shipImages['cruiser.png']}" class="ship cruiser">
+                <img src="${shipImages['submarine.png']}" class="ship submarine">
+                <img src="${shipImages['destroyer.png']}" class="ship destroyer">
             </aside>
         </div>
         <section>
@@ -128,7 +101,7 @@ const place_ships = (cap_name) => {
         <button id="details" title="how to play?">?</button>
       </section>
     `;
-  };
+};
 
   export {place_ships, help_panel, login_form} ;
   
