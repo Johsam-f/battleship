@@ -8,28 +8,29 @@ const ships = [
   { name: 'destroyer', length: 2 }
 ];
 
-let selectedShip = null;
+let selected_ship = null;
 let orientation = 'horizontal';
-const placedShips = [];
+const placed_ships = [];
 
 function initPlacement() {
   const grid = document.querySelector('.grid-box');
   const shipImgs = document.querySelectorAll('#ships .ship');
-  const axisButtons = document.querySelectorAll('#ship-axis button');
-  const confirmBtn = document.getElementById('confirm-plan');
+  const axis_buttons = document.querySelectorAll('#ship-axis button');
+  const confirm_btn = document.getElementById('confirm-plan');
 
-  confirmBtn.disabled = true;
+  confirm_btn.disabled = true;
+  confirm_btn.style.cursor = "not-allowed";
 
-  // Orientation toggle
-  axisButtons.forEach(btn => {
+  // Orientation toggle, (axis buttons)
+  axis_buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       orientation = btn.dataset.name;
-      axisButtons.forEach(b => b.classList.remove('active-btn'));
+      axis_buttons.forEach(b => b.classList.remove('active-btn'));
       btn.classList.add('active-btn');
     });
   });
 
-  // Ship selection
+  // Ship selection and passin the name of the selected ship through the classList[1]
   shipImgs.forEach(img => {
     img.addEventListener('click', () => {
       if (img.classList.contains('placed')) return;
@@ -38,16 +39,16 @@ function initPlacement() {
       img.classList.add('active');
 
       const shipName = img.classList[1];
-      selectedShip = ships.find(s => s.name === shipName);
+      selected_ship = ships.find(s => s.name === shipName);
     });
   });
 
   // Hover preview
   grid.addEventListener('mouseover', (e) => {
-    if (!selectedShip) return;
+    if (!selected_ship) return;
     const index = parseInt(e.target.dataset.index);
-    const cells = getCells(index, selectedShip.length, orientation);
-    const valid = isValid(cells);
+    const cells = _get_cells(index, selected_ship.length, orientation);
+    const valid = _is_valid(cells);
 
     cells.forEach(i => {
       const cell = document.querySelector(`[data-index="${i}"]`);
@@ -63,16 +64,16 @@ function initPlacement() {
 
   // Placement
   grid.addEventListener('click', (e) => {
-    if (!selectedShip) return;
+    if (!selected_ship) return;
     const index = parseInt(e.target.dataset.index);
-    const cells = getCells(index, selectedShip.length, orientation);
-    if (!isValid(cells)) return;
+    const cells = _get_cells(index, selected_ship.length, orientation);
+    if (!_is_valid(cells)) return;
 
     cells.forEach(i => {
       const cell = document.querySelector(`[data-index="${i}"]`);
       if (cell) {
-        cell.classList.add('occupied', selectedShip.name);
-        cell.dataset.ship = selectedShip.name;
+        cell.classList.add('occupied', selected_ship.name);
+        cell.dataset.ship = selected_ship.name;
       }
     });
 
@@ -80,15 +81,15 @@ function initPlacement() {
     const firstCell = document.querySelector(`[data-index="${cells[0]}"]`);
     if (firstCell) {
       const shipImg = document.createElement('img');
-      shipImg.src = shipImages[`${selectedShip.name}.png`]; // ✅ Uses preloaded images
-      shipImg.alt = selectedShip.name;
+      shipImg.src = shipImages[`${selected_ship.name}.png`]; // Uses preloaded images
+      shipImg.alt = selected_ship.name;
       shipImg.classList.add('grid-ship', orientation);
       shipImg.style.position = 'absolute';
       shipImg.style.width = orientation === 'horizontal'
-        ? `${selectedShip.length * 100}%`
+        ? `${selected_ship.length * 100}%`
         : '100%';
       shipImg.style.height = orientation === 'vertical'
-        ? `${selectedShip.length * 100}%`
+        ? `${selected_ship.length * 100}%`
         : '100%';
       shipImg.style.objectFit = 'contain';
       shipImg.style.top = '0';
@@ -103,20 +104,21 @@ function initPlacement() {
       firstCell.appendChild(shipImg);
     }
 
-    placedShips.push({ name: selectedShip.name, cells });
-    const img = document.querySelector(`#ships .${selectedShip.name}`);
+    placed_ships.push({ name: selected_ship.name, cells });
+    const img = document.querySelector(`#ships .${selected_ship.name}`);
     img.classList.remove('active');
     img.classList.add('placed');
-    selectedShip = null;
+    selected_ship = null;
 
-    if (placedShips.length === ships.length) {
-      confirmBtn.disabled = false;
+    if (placed_ships.length === ships.length) {
+      confirm_btn.disabled = false;
+      confirm_btn.style.cursor = "pointer";
     }
   });
 }
 
 // Helpers
-function getCells(startIndex, length, orientation) {
+function _get_cells(startIndex, length, orientation) {
   const cells = [];
   const row = Math.floor(startIndex / 10);
 
@@ -136,11 +138,11 @@ function getCells(startIndex, length, orientation) {
   return cells;
 }
 
-function isValid(cells) {
+function _is_valid(cells) {
   return cells.length > 0 && cells.every(i => {
     const cell = document.querySelector(`[data-index="${i}"]`);
     return cell && !cell.classList.contains('occupied');
   });
 }
 
-export { initPlacement, placedShips };
+export { initPlacement, placed_ships };

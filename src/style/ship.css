@@ -12,14 +12,19 @@
 }
   
 .ship {
+    width: calc(var(--cell-size) * 5);
     height: var(--cell-size);
     object-fit: contain;
     cursor: grab;
     user-select: none;
 }
 
-img, .carrier{
-    width: calc(var(--cell-size) * 5); /* longest ship = 5 cells */
+img.active{
+    background-color: var(--ship);
+}
+
+/* img, .carrier{
+    width: calc(var(--cell-size) * 5); 
 }
 
 .battleship{
@@ -33,7 +38,7 @@ img, .carrier{
 
 .destroyer {
     width: calc(var(--cell-size) * 2);
-}
+} */
 
 /* place buttons to the left */
 #ship-axis{
@@ -58,11 +63,12 @@ img, .carrier{
 
 /* extras */
 .grid-cell.hover-valid {
-    background-color: rgba(0, 255, 0, 0.3);
+    background-color: var(--ship);
   }
   
   .grid-cell.hover-invalid {
     background-color: rgba(255, 0, 0, 0.3);
+    cursor: not-allowed;
   }
   
   .grid-cell.occupied {

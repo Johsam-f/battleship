@@ -30,7 +30,7 @@ const help_panel = () => {
             <p><strong>1. Ship Placement Phase:</strong></p>
             <ul>
               <li>
-                Place your ships on the board by clicking the appropriate 
+                Place your ships on the board by selecting a ship and clicking the appropriate 
                 grid cell (press the buttons,
                 "vertical/horizontal" to place ship in specific axis)
               </li>
