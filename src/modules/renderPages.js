@@ -80,7 +80,7 @@ const place_ships = (cap_name) => {
             
             <aside id="ships">
                 <div>
-                    <img src="${shipImages['carrier.png']}" class="ship" title="">
+                    <img src="${shipImages['carrier.png']}" class="ship">
                     <span> Carrier (5m) </span> 
                 </div>
                 <div>
