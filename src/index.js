@@ -40,6 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }else if(curr_page === "start-game"){
             render_content.innerHTML = lay_gameboard(cap_name);
 
+            document.getElementById("exit-btn").addEventListener('click', () => {
+                render_page("login");
+            });
+
         } else if (curr_page === "help_panel") {
             render_content.innerHTML = help_panel();
 
