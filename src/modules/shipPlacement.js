@@ -10,7 +10,7 @@ const ships = [
 
 let selected_ship = null;
 let orientation = 'horizontal';
-const placed_ships = [];
+const ship_positions = [];
 
 function initPlacement() {
   const grid = document.querySelector('.grid-box');
@@ -81,14 +81,14 @@ function initPlacement() {
     const firstCell = document.querySelector(`[data-index="${cells[0]}"]`);
     if (firstCell) {
       const shipImg = document.createElement('img');
-      shipImg.src = shipImages[`${selected_ship.name}.png`]; // Uses preloaded images
+      shipImg.src = shipImages[`${selected_ship.name}.png`];
       shipImg.alt = selected_ship.name;
       shipImg.classList.add('grid-ship', orientation);
       shipImg.style.position = 'absolute';
       shipImg.style.width = orientation === 'horizontal'
         ? `${selected_ship.length * 100}%`
         : '100%';
-      shipImg.style.height = orientation === 'vertical'
+    shipImg.style.height = orientation === 'vertical'
         ? `${selected_ship.length * 100}%`
         : '100%';
       shipImg.style.objectFit = 'contain';
@@ -98,19 +98,24 @@ function initPlacement() {
 
       if (orientation === 'vertical') {
         shipImg.style.transform = 'rotate(90deg)';
-        shipImg.style.transformOrigin = 'top left';
       }
 
       firstCell.appendChild(shipImg);
     }
 
-    placed_ships.push({ name: selected_ship.name, cells });
+    
+
+    ship_positions.push({
+        first_index: index,          
+        length: selected_ship.length, 
+        is_vertical: orientation === "vertical" 
+    });
     const img = document.querySelector(`#ships .${selected_ship.name}`);
     img.classList.remove('active');
     img.classList.add('placed');
     selected_ship = null;
 
-    if (placed_ships.length === ships.length) {
+    if (ship_positions.length === ships.length) {
       confirm_btn.disabled = false;
       confirm_btn.style.cursor = "pointer";
     }
@@ -145,4 +150,4 @@ function _is_valid(cells) {
   });
 }
 
-export { initPlacement, placed_ships };
+export { initPlacement, ship_positions };
