@@ -28,10 +28,10 @@ aside img:hover:not(img.active){
     background-color: var(--ship-hover);
 }
 
-/* .carrier{
+/* .grid-ship.carrier{
     width: calc(var(--cell-size) * 5); 
-}
-
+} */
+/*
 .battleship{
     width: calc(var(--cell-size) * 4);
 }
@@ -80,7 +80,7 @@ aside img:hover:not(img.active){
   }
   
   .grid-cell.occupied {
-    background-color: rgba(60, 60, 100, 0.6);
+    background-color: rgba(60, 100, 99, 0.6);
   }
   
   #ships .ship.active {
