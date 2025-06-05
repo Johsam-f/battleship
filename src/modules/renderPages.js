@@ -80,23 +80,23 @@ const place_ships = (cap_name) => {
             
             <aside id="ships">
                 <div>
-                    <img src="${shipImages['carrier.png']}" class="ship carrier">
+                    <img src="${shipImages['carrier.png']}" class="ship">
                     <span> Carrier (5m) </span> 
                 </div>
                 <div>
-                    <img src="${shipImages['battleship.png']}" class="ship battleship">
+                    <img src="${shipImages['battleship.png']}" class="ship">
                     <span> battleship (4m) </span>
                 </div>
                 <div>
-                    <img src="${shipImages['cruiser.png']}" class="ship cruiser">
+                    <img src="${shipImages['cruiser.png']}" class="ship">
                     <span> cruiser (3m) </span>
                 </div>
                 <div>
-                    <img src="${shipImages['submarine.png']}" class="ship submarine">
+                    <img src="${shipImages['submarine.png']}" class="ship">
                     <span> submarine (3m) </span>
                 </div>
                 <div>
-                    <img src="${shipImages['destroyer.png']}" class="ship destroyer">
+                    <img src="${shipImages['destroyer.png']}" class="ship">
                     <span> destroyer (2m) </span>
                 </div>
             </aside>
