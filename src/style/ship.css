@@ -67,6 +67,7 @@ aside img:hover:not(img.active){
 }
 
 /* extras */
+.your-cell,
 .grid-cell{
     cursor: not-allowed;
 }

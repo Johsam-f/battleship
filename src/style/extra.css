@@ -10,7 +10,9 @@ aside > div{
     justify-content: center;
 }
 
-#insert-ships{
+#insert-ships,
+#your-board,
+#enemy-board{
     position: relative;
     display: grid;
     place-items: center;
@@ -30,6 +32,8 @@ aside > div{
     padding: 10px;
 }
 
+.enemy-fleet,
+.player-fleet,
 .grid-box{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -42,6 +46,8 @@ aside > div{
     width: var(--grid-size); 
 }
 
+.your-cell,
+.enemy-cell,
 .grid-cell{
     border: 1px solid rgba(0, 0, 0, 0.2);
     position: relative;
@@ -75,4 +81,27 @@ aside > div{
     top: 0px;
     right: 0px;
     font-size: 1.1rem;
+}
+
+/* game board css */
+.message{
+    background-color: var(--background-color);
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    padding: 10px;
+    margin: 20px 30px;
+}
+
+.flex-boards{
+    display: flex;
+}
+
+#enemy-board{
+    background-color: #7c3f0d4a;
+}
+
+@media (max-width: 960px) {
+    #your-board{
+        flex: 1;
+    }
 }

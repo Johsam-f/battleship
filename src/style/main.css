@@ -129,6 +129,17 @@ button:hover{
     opacity: 0.8;
 }
 
+button#exit-btn{
+    position: absolute;
+}
+
+button#exit-btn{
+    top: 0;
+    right: 0;
+}
+
+
+
 h1 {
     position: relative;
     font-size: 5vw;
