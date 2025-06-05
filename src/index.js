@@ -5,6 +5,7 @@ import './style/ship.css';
 
 import { place_ships, login_form, help_panel, lay_gameboard } from './modules/renderPages';
 import { initPlacement } from './modules/shipPlacement';
+import { setting_gameboard, align_ships } from './modules/gameEngine';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Battleship is ready to sail!');
@@ -40,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }else if(curr_page === "start-game"){
             render_content.innerHTML = lay_gameboard(cap_name);
 
+            setting_gameboard
+            align_ships();
+
             document.getElementById("exit-btn").addEventListener('click', () => {
                 render_page("login");
             });
@@ -53,5 +57,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // render_page(); 
+    render_page(); 
 });

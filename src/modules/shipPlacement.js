@@ -80,8 +80,8 @@ function initPlacement() {
     // Add actual image into the first cell
     const firstCell = document.querySelector(`[data-index="${cells[0]}"]`);
     if (firstCell) {
-        _add_img_to_cell(firstCell)
-    }
+        _add_img_to_cell(firstCell, selected_ship.name, selected_ship.length, orientation);
+    }  
 
     ship_positions.push({
         first_index: index,          
@@ -101,29 +101,30 @@ function initPlacement() {
 }
 
 // Helpers
-function _add_img_to_cell(first_cell){
-     const shipImg = document.createElement('img');
-      shipImg.src = shipImages[`${selected_ship.name}.png`];
-      shipImg.alt = selected_ship.name;
-      shipImg.classList.add('grid-ship', orientation);
-      shipImg.style.position = 'absolute';
-      shipImg.style.width = orientation === 'horizontal'
-        ? `${selected_ship.length * 100}%`
-        : '100%';
+function _add_img_to_cell(first_cell, name, length, orientation){
+    const shipImg = document.createElement('img');
+    shipImg.src = shipImages[`${name}.png`];
+    shipImg.alt = name;
+    shipImg.classList.add('grid-ship', orientation);
+    shipImg.style.position = 'absolute';
+    shipImg.style.width = orientation === 'horizontal'
+      ? `${length * 100}%`
+      : '100%';
     shipImg.style.height = orientation === 'vertical'
-        ? `${selected_ship.length * 100}%`
-        : '100%';
-      shipImg.style.objectFit = 'contain';
-      shipImg.style.top = '0';
-      shipImg.style.left = '0';
-      shipImg.style.zIndex = '5';
-
-      if (orientation === 'vertical') {
-        shipImg.style.transform = 'rotate(90deg)';
-      }
-
-      first_cell.appendChild(shipImg);
-}
+      ? `${length * 100}%`
+      : '100%';
+    shipImg.style.objectFit = 'contain';
+    shipImg.style.top = '0';
+    shipImg.style.left = '0';
+    shipImg.style.zIndex = '5';
+  
+    if (orientation === 'vertical') {
+      shipImg.style.transform = 'rotate(90deg)';
+    }
+  
+    first_cell.appendChild(shipImg);
+  }
+  
 
 function _get_cells(startIndex, length, orientation) {
   const cells = [];
@@ -152,4 +153,4 @@ function _is_valid(cells) {
   });
 }
 
-export { initPlacement, ship_positions, _add_img_to_cell };
+export { initPlacement, ship_positions, _add_img_to_cell, _get_cells };

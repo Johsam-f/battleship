@@ -28,24 +28,6 @@ aside img:hover:not(img.active){
     background-color: var(--ship-hover);
 }
 
-/* .grid-ship.carrier{
-    width: calc(var(--cell-size) * 5); 
-} */
-/*
-.battleship{
-    width: calc(var(--cell-size) * 4);
-}
-
-.cruiser, 
-.submarine {
-    width: calc(var(--cell-size) * 3);
-}
-
-.destroyer {
-    width: calc(var(--cell-size) * 2);
-} */
-
-/* place buttons to the left */
 #ship-axis{
     display: flex;
     justify-content: center;
@@ -80,7 +62,8 @@ aside img:hover:not(img.active){
     background-color: rgba(255, 0, 0, 0.3);
   }
   
-  .grid-cell.occupied {
+  .grid-cell.occupied,
+  .your-cell.occupied {
     background-color: rgba(60, 100, 99, 0.6);
   }
   

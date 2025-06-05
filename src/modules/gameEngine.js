@@ -1,6 +1,6 @@
 import Player from "./player";
-import { ship_positions, _add_img_to_cell } from "./shipPlacement";
-import shipImages from "./utils/importImages";
+import { ship_positions, _add_img_to_cell, _get_cells } from "./shipPlacement";
+
 
 const player1 = Player();
 const computer = Player();
@@ -38,20 +38,37 @@ function _get_coord(index){
 }
 
 function align_ships(){
-
     const img_cells = document.querySelectorAll('.your-cell');
-
-    // Placement
+    const ships = [
+        { name: 'carrier'},
+        { name: 'battleship'},
+        { name: 'cruiser'},
+        { name: 'submarine'},
+        { name: 'destroyer'}
+      ];
+  
     for (let i = 0; i < ship_positions.length; i++) {
-        let {first_index, length, is_vertical} = ship_positions[i];
-        img_cells.forEach( cell => {
-            if(cell.dataset.index === first_index){
-                _add_img_to_cell(cell);
+      let {first_index, length, is_vertical} = ship_positions[i];
+      const cell = document.querySelector(`.your-cell[data-index="${first_index}"]`);
+      if (cell) {
+        const name = ships[i].name;
+        const orientation = is_vertical ? 'vertical' : 'horizontal';
+
+        //colour the cells by assigning class
+        const cells = _get_cells(first_index, length, orientation);
+        cells.forEach(i => {
+            const curr_cell = document.querySelector(`[data-index="${i}"]`);
+            if (curr_cell) {
+                curr_cell.classList.add('occupied');
             }
         });
+
+        _add_img_to_cell(cell, name, length, orientation);
+      }
     }
-}
+  }
+  
 
 
 
-export { setting_gameboard, player1, computer };
+export { setting_gameboard, player1, computer, align_ships };

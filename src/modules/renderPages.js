@@ -111,8 +111,44 @@ const place_ships = (cap_name) => {
 };
 
 function lay_gameboard(cap_name){
+    let your_cells = '';
+    let enemy_cells = '';
+    for (let i = 0; i < 100; i++) {
+      your_cells += `<div data-index="${i}" class="your-cell"></div>`;
+      enemy_cells += `<div data-index="${i}" class="enemy-cell"></div>`;
+    }
+
     return `
-    
+        <button id="exit-btn"><i class="fa fa-sign-out"></i></button>
+      <div class="message">
+        <h2>
+          Ahoy, Captain <span><strong>${cap_name}</strong></span
+          >!
+        </h2>
+        <p>
+          the battle begins now! Enemy ships lurk in the fog
+        </p>
+      </div>
+      <div class="flex-boards">
+        <section id="your-board">
+          <h2>your fleet</h2>
+          <div class="flex">
+            <div>
+              <section class="player-fleet">
+                ${your_cells}
+              </section>
+            </div>
+          </div>
+        </section>
+        <section id="enemy-board">
+          <h2>enemy's fleet</h2>
+          <div class="flex">
+            <section class="enemy-fleet">
+              ${enemy_cells}
+            </section>
+          </div>
+        </section>
+      </div>
     `;
 }
 
