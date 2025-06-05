@@ -17,13 +17,18 @@
     object-fit: contain;
     cursor: grab;
     user-select: none;
+    border-radius: 10px;
 }
 
 img.active{
     background-color: var(--ship);
 }
 
-/* img, .carrier{
+aside img:hover:not(img.active){
+    background-color: var(--ship-hover);
+}
+
+/* .carrier{
     width: calc(var(--cell-size) * 5); 
 }
 
