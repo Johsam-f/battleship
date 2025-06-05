@@ -49,5 +49,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    render_page(); 
+    // render_page(); 
 });
