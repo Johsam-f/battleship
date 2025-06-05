@@ -3,7 +3,7 @@ import './style/fonts.css';
 import './style/extra.css';
 import './style/ship.css';
 
-import { place_ships, login_form, help_panel } from './modules/renderPages';
+import { place_ships, login_form, help_panel, lay_gameboard } from './modules/renderPages';
 import { initPlacement } from './modules/shipPlacement';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let cap_name;
 
-    function render_page(curr_page = "place_ships") {
+    function render_page(curr_page = "login") {
         let render_content = document.getElementById("render-content");
 
         if (curr_page === "login") {
@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 render_page("help_panel");
             });
 
+            document.getElementById("confirm-plan").addEventListener('click', () => {
+                render_page("start-game");
+            });
+
+        }else if(curr_page === "start-game"){
+            render_content.innerHTML = lay_gameboard(cap_name);
+
         } else if (curr_page === "help_panel") {
             render_content.innerHTML = help_panel();
 
@@ -42,5 +49,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    render_page(); // Start at login page
+    render_page(); 
 });

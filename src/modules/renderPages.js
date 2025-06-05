@@ -110,5 +110,11 @@ const place_ships = (cap_name) => {
     `;
 };
 
-  export {place_ships, help_panel, login_form} ;
+function lay_gameboard(cap_name){
+    return `
+    
+    `;
+}
+
+  export {place_ships, help_panel, login_form, lay_gameboard} ;
   
