@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else if (curr_page === "place_ships") {
             render_content.innerHTML = place_ships(cap_name);
-            initPlacement(); // Hook up click-to-place logic
+            initPlacement();
 
             document.getElementById("details").addEventListener('click', () => {
                 render_page("help_panel");
