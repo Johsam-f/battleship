@@ -67,13 +67,16 @@ aside img:hover:not(img.active){
 }
 
 /* extras */
+.grid-cell{
+    cursor: not-allowed;
+}
 .grid-cell.hover-valid {
     background-color: var(--ship);
-  }
+    cursor: pointer;
+}
   
   .grid-cell.hover-invalid {
     background-color: rgba(255, 0, 0, 0.3);
-    cursor: not-allowed;
   }
   
   .grid-cell.occupied {
