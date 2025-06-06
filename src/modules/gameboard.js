@@ -8,8 +8,8 @@ export default function Gameboard() {
       const {x, y} = start_coord;
 
       if(is_vertical){
-        if(y + (length - 1) > 9) return false; // coordinates going overboard, failed
-
+        if(y - (length - 1) > 9) return false; // coordinates going overboard, failed
+        
       }else{
         if(x + (length - 1) > 9 ) return false; // coordinates going overboard, failed
       }
@@ -22,11 +22,11 @@ export default function Gameboard() {
 
       if(!is_vertical){
         for (let i = 0; i < length; i++) {
-            positions.push([x+i,y]);
+            positions.push([x + i,y]);
         }
       }else{
         for (let i = 0; i < length; i++) {
-            positions.push([x,y+i]);
+            positions.push([x,y - i]);
         }
       }
 
@@ -48,7 +48,7 @@ export default function Gameboard() {
           const [px, py] = position;
 
           for (let i = 0; i < length; i++) {
-            if( is_vertical? x === px && y+i === py : x+i === px && y === py){
+            if( is_vertical? x === px && y - i === py : x+i === px && y === py){
               return true;
             }
             
