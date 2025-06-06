@@ -39,20 +39,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 render_page("start-game");
             });
 
-        }else if(curr_page === "start-game"){
+        }else if (curr_page === "start-game") {
+            const controller = new AbortController();
+            
             render_content.innerHTML = lay_gameboard(cap_name);
-
-            game_engine();
-        }else if(curr_page === "display_winner"){
-            render_content.innerHTML = display_winner();
-
-            document.querySelector(".restart").addEventListener('click', () => {
-                render_page("place_ships");
-            });
-            document.querySelector(".exit").addEventListener('click', () => {
+            
+            // Set up self-removing listeners 
+            // need to understand more about removing event listners for dynamic rendering 
+            document.getElementById("exit-btn")?.addEventListener('click', () => {
+                controller.abort();
                 render_page("login");
-            });
-        } else if (curr_page === "help_panel") {
+            }, { signal: controller.signal });
+            
+            document.addEventListener('gameEnded', () => {
+                controller.abort();
+                const winner_board = document.getElementById("display-winner");
+                winner_board.innerHTML = display_winner(winner);
+                const unhide_board = document.getElementById("winner-modal");
+                unhide_board.classList.remove("hide");
+                unhide_board.classList.add("unhide");
+
+                document.querySelector(".restart").addEventListener('click', () => {
+                    render_page("place_ships");
+                });
+                document.querySelector(".exit").addEventListener('click', () => {
+                    render_page("login");
+                });
+            }, { signal: controller.signal });
+            
+            //seems to be running before lay_gameboard has finished, 
+            // making eventlistener not to find the required button
+                game_engine();
+        }else if (curr_page === "help_panel") {
             render_content.innerHTML = help_panel();
 
             document.querySelector(".close-help").addEventListener('click', () => {
@@ -64,5 +82,3 @@ document.addEventListener('DOMContentLoaded', () => {
     render_page(); 
 });
 
-
-export default render_page;

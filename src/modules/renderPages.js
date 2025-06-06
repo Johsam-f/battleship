@@ -119,6 +119,16 @@ function lay_gameboard(cap_name){
     }
 
     return `
+        <section id="winner-modal" class="hide">
+        <div class="winner-content">
+            <div id="display-winner"></div>
+            <div class="win-buttons">
+                <button class="exit"><i class="fa fa-sign-out"></i></button>
+                <button class="restart">Restart Battle</button>
+            </div>
+        </div>
+        </section> 
+
         <button id="exit-btn"><i class="fa fa-sign-out"></i></button>
       <div class="message">
         <h2>
@@ -143,7 +153,7 @@ function lay_gameboard(cap_name){
         <section id="enemy-board">
           <h2>enemy's fleet</h2>
           <div class="flex">
-            <section class="enemy-fleet">
+            <section id="enemy-fleet" class="enemy-fleet">
               ${enemy_cells}
             </section>
           </div>
@@ -152,5 +162,15 @@ function lay_gameboard(cap_name){
     `;
 }
 
-  export {place_ships, help_panel, login_form, lay_gameboard} ;
+function display_winner(winner) {
+    return `
+    <h2>${winner === 'player' ? 'Victory!' : 'Defeat!'}</h2>
+                <p>${winner === 'player' 
+                    ? 'You outmaneuvered the enemy fleet! All ships sunk!' 
+                    : 'The enemy fleet has overwhelmed your forces...'}</p>
+                <p class="play-again">Play again?</p>
+    `;
+}
+
+  export {place_ships, help_panel, login_form, lay_gameboard, display_winner} ;
   
