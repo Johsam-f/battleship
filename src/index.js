@@ -3,9 +3,10 @@ import './style/fonts.css';
 import './style/extra.css';
 import './style/ship.css';
 
-import { place_ships, login_form, help_panel, lay_gameboard } from './modules/renderPages';
+import { place_ships, login_form, help_panel, lay_gameboard, display_winner } from './modules/renderPages';
 import { initPlacement } from './modules/shipPlacement';
-import { setting_gameboard, align_ships } from './modules/gameEngine';
+import { game_engine, winner } from './modules/gameEngine';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Battleship is ready to sail!');
@@ -41,13 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }else if(curr_page === "start-game"){
             render_content.innerHTML = lay_gameboard(cap_name);
 
-            setting_gameboard
-            align_ships();
-
-            document.getElementById("exit-btn").addEventListener('click', () => {
-                render_page("login");
-            });
-
+            game_engine();
+        }else if(curr_page === "display_winner"){
+            render_content.innerHTML = display_winner();
         } else if (curr_page === "help_panel") {
             render_content.innerHTML = help_panel();
 
@@ -59,3 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     render_page(); 
 });
+
+
+export default render_page;
