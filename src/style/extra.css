@@ -124,3 +124,22 @@ aside > div{
         flex: 1;
     }
 }
+
+/* display winner */
+#winner-modal{
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    background-color: rgba(127, 130, 53, 0.4);
+}
+
+.hide{
+    display: none;
+}
+.unhide{
+    display: grid;
+    place-items: center;
+}
