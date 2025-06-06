@@ -100,6 +100,21 @@ aside > div{
     background-color: #7c3f0d4a;
 }
 
+.dot{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.attack-succeed > .dot{
+    background-color: #e80505;
+}
+
+.attack-fail > .dot{
+    background-color: #fff;
+}
+
 @media (max-width: 960px) {
     #your-board{
         flex: 1;
