@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".restart").addEventListener('click', () => {
                 render_page("place_ships");
             });
+            document.querySelector(".exit").addEventListener('click', () => {
+                render_page("login");
+            });
         } else if (curr_page === "help_panel") {
             render_content.innerHTML = help_panel();
 
