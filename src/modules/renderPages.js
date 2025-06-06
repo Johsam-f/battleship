@@ -123,8 +123,8 @@ function lay_gameboard(cap_name){
         <div class="winner-content">
             <div id="display-winner"></div>
             <div class="win-buttons">
-                <button class="exit"><i class="fa fa-sign-out"></i></button>
-                <button class="restart">Restart Battle</button>
+                <button class="exit">No!</button>
+                <button class="restart">Yes!</button>
             </div>
         </div>
         </section> 
