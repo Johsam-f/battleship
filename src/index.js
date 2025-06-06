@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
             game_engine();
         }else if(curr_page === "display_winner"){
             render_content.innerHTML = display_winner();
+
+            document.querySelector(".restart").addEventListener('click', () => {
+                render_page("place_ships");
+            });
         } else if (curr_page === "help_panel") {
             render_content.innerHTML = help_panel();
 
