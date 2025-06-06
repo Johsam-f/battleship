@@ -109,6 +109,8 @@ aside > div{
     width: 50%;
     height: 50%;
     border-radius: 50%;
+    z-index: 10;
+    opacity: 0.4;
 }
 
 .attack-succeed > .dot{
