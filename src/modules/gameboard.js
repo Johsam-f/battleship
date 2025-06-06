@@ -77,6 +77,7 @@ export default function Gameboard() {
         if (hit) break;
       }
       if(!hit) missed_attacks.push(coord);
+      return hit;
     }    
   
     function all_ships_sunk() {

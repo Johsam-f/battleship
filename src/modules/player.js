@@ -4,7 +4,7 @@ export default function Player() {
     const player_board = Gameboard();
 
     function attack(opponentBoard, coord){
-            opponentBoard.receive_attack(coord);
+          return  opponentBoard.receive_attack(coord);
     }
   
     return {
