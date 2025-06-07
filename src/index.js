@@ -6,10 +6,28 @@ import './style/ship.css';
 import { place_ships, login_form, help_panel, lay_gameboard, display_winner } from './modules/renderPages';
 import { initPlacement } from './modules/shipPlacement';
 import { game_engine, winner } from './modules/gameEngine';
-
+import bgMusic from './assets/audio/Battle-of-Courage.mp3'
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Battleship is ready to sail!');
+    const audio = new Audio(bgMusic);
+    audio.loop = true;
+    audio.volume = 0.8;
+    document.addEventListener('click', () => {
+        audio.play().catch(err => console.log('Autoplay blocked:', err));
+      }, { once: true });
+
+    let isMuted = false;
+    const toggleBtn = document.getElementById('toggle-music');
+    const icon = toggleBtn.querySelector('.volume');
+
+    toggleBtn.addEventListener('click', () => {
+        isMuted = !isMuted;
+        audio.muted = isMuted;
+      
+        icon.classList.toggle('fa-volume-up', !isMuted);
+        icon.classList.toggle('fa-volume-mute', isMuted);
+    });
 
     let cap_name;
 
