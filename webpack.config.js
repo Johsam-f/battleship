@@ -28,6 +28,10 @@ export default {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.(mp3|wav|ogg)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
