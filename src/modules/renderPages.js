@@ -32,7 +32,7 @@ const help_panel = () => {
               <li>
                 Place your ships on the board by selecting a ship and clicking the appropriate 
                 grid cell (press the buttons,
-                "vertical/horizontal" to place ship in specific axis)
+                "vertical/horizontal" to place ship in specific direction)
               </li>
               <li>Ships cannot overlap or extend beyond the grid</li>
               <li>
@@ -67,7 +67,8 @@ const place_ships = (cap_name) => {
       <section id="insert-ships">
         <h2>Hello captain <span><strong>${cap_name}</strong></span>!</h2>
         <p>
-          Ahoy, <span><strong>${cap_name}</strong></span>! Time to deploy your fleet—select a ship and click a cell to place it. Choose orientation with the buttons! <i class="fas fa-anchor"></i>
+          Ahoy, <span><strong>${cap_name}</strong></span>! Time to deploy your fleet—select a ship and click a cell to place it.
+           Choose ship direction(horizontal/vertical) with the buttons! <i class="fas fa-anchor"></i>
         </p>
         <div class="flex">
             <div>
