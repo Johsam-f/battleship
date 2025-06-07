@@ -149,5 +149,5 @@ function align_ships(){
 
 }
 
-  export {game_engine, winner};
+  export {game_engine, winner, player1};
   

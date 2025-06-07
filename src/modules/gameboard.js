@@ -91,8 +91,6 @@ export default function Gameboard() {
       place_ship,
       receive_attack,
       all_ships_sunk,
-      missed_attacks, // may expose for testing
-      ships //for testing
     };
   }
   

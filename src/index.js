@@ -6,6 +6,7 @@ import './style/ship.css';
 import { place_ships, login_form, help_panel, lay_gameboard, display_winner } from './modules/renderPages';
 import { resetPlacement, initPlacement } from './modules/shipPlacement';
 import { game_engine, winner } from './modules/gameEngine';
+import { player1 } from './modules/gameEngine';
 import bgMusic from './assets/audio/Battle-of-Courage.mp3'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else if (curr_page === "place_ships") {
             render_content.innerHTML = place_ships(cap_name);
+            player1.reset_board();
             resetPlacement();
             initPlacement();
 
@@ -70,10 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 render_page("login");
             }, { signal: controller.signal });
             
-            document.addEventListener('gameEnded', () => {
+            document.addEventListener('gameEnded', (e) => {
                 controller.abort();
                 const winner_board = document.getElementById("display-winner");
-                winner_board.innerHTML = display_winner(winner);
+                winner_board.innerHTML = display_winner(e);
                 const unhide_board = document.getElementById("winner-modal");
                 unhide_board.classList.remove("hide");
                 unhide_board.classList.add("unhide");
