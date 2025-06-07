@@ -12,6 +12,44 @@ let selected_ship = null;
 let orientation = 'horizontal';
 const ship_positions = [];
 
+function resetPlacement() {
+  ship_positions.length = 0;
+  selected_ship = null;
+  orientation = 'horizontal';
+
+  // Reset confirm button
+  const confirm_btn = document.getElementById('confirm-plan');
+  if (confirm_btn) {
+    confirm_btn.disabled = true;
+    confirm_btn.style.cursor = "not-allowed";
+  }
+
+  // Reset ship buttons
+  const axis_buttons = document.querySelectorAll('#ship-axis button');
+  axis_buttons.forEach(btn => btn.classList.remove('active-btn'));
+  axis_buttons.forEach(btn => {
+    if (btn.dataset.name === 'horizontal') {
+      btn.classList.add('active-btn');
+    }
+  });
+
+  // Reset ship images
+  const shipImgs = document.querySelectorAll('#ships .ship');
+  shipImgs.forEach(img => {
+    img.classList.remove('active', 'placed');
+  });
+
+  // Reset grid
+  const gridCells = document.querySelectorAll('.grid-cell');
+  gridCells.forEach(cell => {
+    cell.className = 'grid-cell'; // removes all additional classes
+    cell.removeAttribute('data-ship');
+    const img = cell.querySelector('img');
+    if (img) img.remove();
+  });
+}
+
+
 function initPlacement() {
   const grid = document.querySelector('.grid-box');
   const shipImgs = document.querySelectorAll('#ships .ship');
@@ -153,4 +191,4 @@ function _is_valid(cells) {
   });
 }
 
-export { initPlacement, ship_positions, _add_img_to_cell, _get_cells };
+export { resetPlacement, initPlacement, ship_positions, _add_img_to_cell, _get_cells };

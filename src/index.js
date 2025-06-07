@@ -4,7 +4,7 @@ import './style/extra.css';
 import './style/ship.css';
 
 import { place_ships, login_form, help_panel, lay_gameboard, display_winner } from './modules/renderPages';
-import { initPlacement } from './modules/shipPlacement';
+import { resetPlacement, initPlacement } from './modules/shipPlacement';
 import { game_engine, winner } from './modules/gameEngine';
 import bgMusic from './assets/audio/Battle-of-Courage.mp3'
 
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else if (curr_page === "place_ships") {
             render_content.innerHTML = place_ships(cap_name);
+            resetPlacement();
             initPlacement();
 
             document.getElementById("details").addEventListener('click', () => {
